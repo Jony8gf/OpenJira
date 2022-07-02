@@ -37,11 +37,13 @@ export const connect = async () => {
 
 export const disconnect = async () => {
 
-    if (mongooConncection.isConnected === 0 ){
-        await mongoose.disconnect();
-        mongooConncection.isConnected = 0;
-        console.log('MongoDB disconnected');
-    }
+    if(process.env.NODE_ENV === 'development') return;
+
+    if (mongooConncection.isConnected === 0 ) return;
+
+    await mongoose.disconnect();
+    // mongooConncection.isConnected = 0;
+    console.log('MongoDB disconnected');
     
 }
 
