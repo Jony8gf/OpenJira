@@ -15,7 +15,7 @@ export const EntryList:FC<Props> = ({status}) => {
   const { entries, updateEntry } = useContext(EntriesContext);
   const { isDragging, endDragging} = useContext(UIContext);
 
-  const entryByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries])
+  const entryByStatus = useMemo(() => entries?.filter(entry => entry.status === status), [entries])
 
   const onDropEntry = (e: React.DragEvent<HTMLDivElement>) => {
     const id = e.dataTransfer.getData('text');
